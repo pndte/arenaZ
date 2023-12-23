@@ -1,4 +1,4 @@
-package me.pndte.arenaz.core.gameclasses;
+package me.pndte.arenaz.core.game_classes;
 
 import org.bukkit.entity.Player;
 
