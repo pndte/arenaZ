@@ -1,0 +1,7 @@
+name: arenaZ
+version: '${project.version}'
+main: me.pndte.arenaz.ArenaZ
+api-version: '1.20'
+prefix: arenaZ
+authors: [pndte]
+website: https://github.com/pndte
