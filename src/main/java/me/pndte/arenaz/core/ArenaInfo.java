@@ -1,16 +1,22 @@
 package me.pndte.arenaz.core;
 import me.pndte.arenaz.core.action_blocks.IActionPlate;
-import me.pndte.arenaz.core.players.IArenaPlayer;
+import me.pndte.arenaz.core.database.Database;
+import me.pndte.arenaz.core.players.DefaultArenaPlayer;
 import org.bukkit.block.Block;
+
+import javax.xml.crypto.Data;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class ArenaInfo {
-    public final HashMap<UUID, IArenaPlayer> _players = new HashMap<>();
+    private final HashMap<UUID, DefaultArenaPlayer> _players = new HashMap<>();
     private final HashMap<Block, IActionPlate> _actionPlates = new HashMap<>();
 
-    public void addPlayer(IArenaPlayer player){
+    public void addPlayer(DefaultArenaPlayer player){
         _players.put(player.minecraftPlayer().getUniqueId(), player);
+    }
+    public DefaultArenaPlayer getPlayer(UUID playerId){
+        return _players.get(playerId);
     }
 
     public void removePlayer(UUID playerId){
@@ -25,11 +31,19 @@ public class ArenaInfo {
         _actionPlates.put(actionPlate.plate(), actionPlate);
     }
 
+    public IActionPlate getActionPlate(Block plate){
+        return _actionPlates.get(plate);
+    }
+
     public void removePlate(Block block){
         _actionPlates.remove(block);
     }
 
     public boolean containPlate(Block block){
         return _actionPlates.containsKey(block);
+    }
+
+    public void SavePlates(Database database){
+        database.WriteActionPlates(_actionPlates.values());
     }
 }
