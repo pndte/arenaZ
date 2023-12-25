@@ -5,3 +5,8 @@ api-version: '1.20'
 prefix: arenaZ
 authors: [pndte]
 website: https://github.com/pndte
+
+commands:
+  setactionplate:
+    description: define plates that will change player game class;
+    usage: /<command>
