@@ -1,6 +1,6 @@
 package me.pndte.arenaz.core.action_blocks;
 
-import me.pndte.arenaz.core.game_classes.IGameClass;
+import me.pndte.arenaz.core.game_classes.absctractions.IGameClass;
 import me.pndte.arenaz.core.players.DefaultArenaPlayer;
 import org.bukkit.block.Block;
 
@@ -24,5 +24,10 @@ public class GameClassifiableActionPlate implements IActionPlate {
     @Override
     public Block plate() {
         return _plate;
+    }
+
+    @Override
+    public IGameClass gameClass() {
+        return _gameClass;
     }
 }
