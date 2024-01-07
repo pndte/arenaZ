@@ -6,12 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class ActionPlatesListener implements Listener {
-    private final ArenaInfo _arenaInfo;
-    public ActionPlatesListener(ArenaInfo arenaInfo){
-        _arenaInfo = arenaInfo;
-    }
     @EventHandler
     public void plateRemoved(BlockBreakEvent breakEvent){
-        if (_arenaInfo.containPlate(breakEvent.getBlock())) _arenaInfo.removePlate(breakEvent.getBlock());
+        if (ArenaInfo.containPlate(breakEvent.getBlock())) ArenaInfo.removePlate(breakEvent.getBlock());
     }
 }

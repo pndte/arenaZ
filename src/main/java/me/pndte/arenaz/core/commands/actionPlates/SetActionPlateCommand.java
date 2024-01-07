@@ -10,8 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SetActionPlateCommand extends AbstractCommand {
-    public SetActionPlateCommand(JavaPlugin plugin, String commandName, ArenaInfo arenaInfo) {
-        super(plugin, commandName, arenaInfo);
+    public SetActionPlateCommand(JavaPlugin plugin, String commandName) {
+        super(plugin, commandName);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SetActionPlateCommand extends AbstractCommand {
         //if (!Arrays.stream(EGameClass.values()).toList().contains(args[0])) {return false;} TODO: вернуть + починить
         IGameClass gameClass = IGameClass.classFromString(args[0]);
 
-        arenaInfo.addActionPlate(new GameClassifiableActionPlate(block, gameClass));
+        ArenaInfo.addActionPlate(new GameClassifiableActionPlate(block, gameClass));
         return true;
     }
 }

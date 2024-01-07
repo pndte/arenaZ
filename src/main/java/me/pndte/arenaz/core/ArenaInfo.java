@@ -4,46 +4,45 @@ import me.pndte.arenaz.core.database.Database;
 import me.pndte.arenaz.core.players.DefaultArenaPlayer;
 import org.bukkit.block.Block;
 
-import javax.xml.crypto.Data;
 import java.util.HashMap;
 import java.util.UUID;
 
 public class ArenaInfo {
-    private final HashMap<UUID, DefaultArenaPlayer> _players = new HashMap<>();
-    private final HashMap<Block, IActionPlate> _actionPlates = new HashMap<>();
+    public static final HashMap<UUID, DefaultArenaPlayer> players = new HashMap<>();
+    public static final HashMap<Block, IActionPlate> actionPlates = new HashMap<>();
 
-    public void addPlayer(DefaultArenaPlayer player){
-        _players.put(player.minecraftPlayer().getUniqueId(), player);
+    public static void addPlayer(DefaultArenaPlayer player){
+        players.put(player.minecraftPlayer().getUniqueId(), player);
     }
-    public DefaultArenaPlayer getPlayer(UUID playerId){
-        return _players.get(playerId);
-    }
-
-    public void removePlayer(UUID playerId){
-        _players.remove(playerId);
+    public static DefaultArenaPlayer getPlayer(UUID playerId){
+        return players.get(playerId);
     }
 
-    public boolean containPlayer(UUID playerId){
-        return _players.containsKey(playerId);
+    public static void removePlayer(UUID playerId){
+        players.remove(playerId);
     }
 
-    public void addActionPlate(IActionPlate actionPlate){
-        _actionPlates.put(actionPlate.plate(), actionPlate);
+    public static boolean containPlayer(UUID playerId){
+        return players.containsKey(playerId);
     }
 
-    public IActionPlate getActionPlate(Block plate){
-        return _actionPlates.get(plate);
+    public static void addActionPlate(IActionPlate actionPlate){
+        actionPlates.put(actionPlate.plate(), actionPlate);
     }
 
-    public void removePlate(Block block){
-        _actionPlates.remove(block);
+    public static IActionPlate getActionPlate(Block plate){
+        return actionPlates.get(plate);
     }
 
-    public boolean containPlate(Block block){
-        return _actionPlates.containsKey(block);
+    public static void removePlate(Block block){
+        actionPlates.remove(block);
     }
 
-    public void SavePlates(Database database){
-        database.WriteActionPlates(_actionPlates.values());
+    public static boolean containPlate(Block block){
+        return actionPlates.containsKey(block);
+    }
+
+    public static void SavePlates(Database database){
+        database.WriteActionPlates(actionPlates.values());
     }
 }
